@@ -5,8 +5,8 @@
 
 Browns
 #302804
-#503C2D
-#493D2E
+#503C2D (log walls base)
+#493D2E (log walls overlay)
 
 Greens
 #5F723B
