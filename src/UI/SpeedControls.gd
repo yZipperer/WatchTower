@@ -8,39 +8,39 @@ onready var fast = $Fast
 
 
 func _on_Fast_pressed():
-	pass
+	Engine.set_time_scale(2)
 	#Clock.pause = false
-	#fast.disabled = true
-	#pause.disabled = false
-	#normal.disabled = false
-	#slow.disabled = false
+	fast.disabled = true
+	pause.disabled = false
+	normal.disabled = false
+	slow.disabled = false
 	#Clock.speed_control = 1
 
 
 func _on_Normal_pressed():
-	pass
+	Engine.set_time_scale(1)
 	#Clock.pause = false
-	#fast.disabled = false
-	#pause.disabled = false
-	#normal.disabled = true
-	#slow.disabled = false
+	fast.disabled = false
+	pause.disabled = false
+	normal.disabled = true
+	slow.disabled = false
 	#Clock.speed_control = 2
 
 
 func _on_Pause_pressed():
-	pass
+	Engine.set_time_scale(0)
 	#Clock.pause = true
-	#fast.disabled = false
-	#pause.disabled = true
-	#normal.disabled = false
-	#slow.disabled = false
+	fast.disabled = false
+	pause.disabled = true
+	normal.disabled = false
+	slow.disabled = false
 
 
 func _on_Slow_pressed():
-	pass
+	Engine.set_time_scale(0.5)
 	#Clock.pause = false
-	#fast.disabled = false
-	#pause.disabled = false
-	#normal.disabled = false
-	#slow.disabled = true
+	fast.disabled = false
+	pause.disabled = false
+	normal.disabled = false
+	slow.disabled = true
 	#Clock.speed_control = 5
