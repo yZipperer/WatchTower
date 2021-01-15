@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://DayTimeUI.gd" type="Script" id=2]
+[ext_resource path="res://UI/DayTimeUI.gd" type="Script" id=2]
+[ext_resource path="res://UI/SpeedControls.gd" type="Script" id=3]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -76,6 +77,7 @@ size_flags_vertical = 0
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
 columns = 2
+script = ExtResource( 3 )
 
 [node name="Pause" type="Button" parent="Panel/HBoxContainer/HBoxContainer/SpeedControls"]
 margin_right = 16.0
@@ -104,3 +106,7 @@ margin_right = 36.0
 margin_bottom = 38.0
 custom_fonts/font = ExtResource( 1 )
 text = ">>"
+[connection signal="pressed" from="Panel/HBoxContainer/HBoxContainer/SpeedControls/Pause" to="Panel/HBoxContainer/HBoxContainer/SpeedControls" method="_on_Pause_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/HBoxContainer/SpeedControls/Slow" to="Panel/HBoxContainer/HBoxContainer/SpeedControls" method="_on_Slow_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/HBoxContainer/SpeedControls/Normal" to="Panel/HBoxContainer/HBoxContainer/SpeedControls" method="_on_Normal_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/HBoxContainer/SpeedControls/Fast" to="Panel/HBoxContainer/HBoxContainer/SpeedControls" method="_on_Fast_pressed"]
