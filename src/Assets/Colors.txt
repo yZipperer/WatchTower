@@ -7,11 +7,15 @@ Browns
 #302804
 #503C2D (log walls base)
 #493D2E (log walls overlay)
+#4A3B2D (Garden Base)
+#423624 (Garden Outline)
 
 Greens
 #5F723B
 #56733B
 #5F6B39
 #4D6B35
+
+
 
 
