@@ -1,4 +1,17 @@
-#FFC500
-Black
-White
-#302804 - Brown
+//This the palette used in making the assets. If you choose to create additional assets for the game or update existing assets, please add those colors to this file.
+
+#000 - Black
+#FFF - White
+
+Browns
+#302804
+#503C2D
+#493D2E
+
+Greens
+#5F723B
+#56733B
+#5F6B39
+#4D6B35
+
+
