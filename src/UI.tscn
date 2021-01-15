@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://DayTimeUI.gd" type="Script" id=2]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1024.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+margin_right = 1024.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="VBoxContainer" parent="Panel/HBoxContainer"]
+margin_right = 338.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="MainMaterials" type="GridContainer" parent="Panel/HBoxContainer"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="DayTime" type="VBoxContainer" parent="Panel/HBoxContainer"]
+margin_left = 979.0
+margin_right = 1024.0
+margin_bottom = 40.0
+size_flags_horizontal = 10
+script = ExtResource( 2 )
+
+[node name="Day" type="Label" parent="Panel/HBoxContainer/DayTime"]
+margin_right = 45.0
+margin_bottom = 18.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Day 31  "
+align = 1
+valign = 2
+
+[node name="Time" type="Label" parent="Panel/HBoxContainer/DayTime"]
+margin_top = 22.0
+margin_right = 45.0
+margin_bottom = 40.0
+grow_horizontal = 2
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+text = "12:09"
+align = 1

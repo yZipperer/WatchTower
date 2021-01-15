@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Base Builder"
 run/main_scene="res://Main.tscn"
 
+[autoload]
+
+Clock="*res://Clock.gd"
+
 [display]
 
 window/size/test_width=768
