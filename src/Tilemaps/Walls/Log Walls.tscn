@@ -78,7 +78,7 @@
 4/shapes = [  ]
 4/z_index = 0
 
-[node name="Log Walls" type="TileMap"]
+[node name="LogWalls" type="TileMap"]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
