@@ -16,10 +16,15 @@ var tile_index = -100
 var tile_name
 onready var current_set = cumulative
 func _unhandled_input(event):
-	if Input.is_action_just_pressed('click_left') && cumulative.in_menu == true && Vars.buildSelection == true:
-		if tile_index == -100:
+	if Input.is_action_just_pressed('click_left') && cumulative.in_menu == true:
+		if tile_index == -100 && Vars.buildSelection == true:
 			pass
-		else:
+		elif Vars.rotate == true:
+			var target_position = get_global_mouse_position()
+			tile = current_set.world_to_map(target_position)
+			var tile_i = current_set.get_cellv(tile)
+			current_set.set_cell(tile.x, tile.y, tile_i, true, false, true)
+		elif Vars.buildSelection == true:
 			var target_position = get_global_mouse_position()
 			tile = current_set.world_to_map(target_position)
 			#has(var2str((tile/2).floor())) == false:
@@ -35,6 +40,8 @@ func _unhandled_input(event):
 		tile = current_set.world_to_map(target_position)
 		#print(var2str((tile/2).floor()))
 		delete_tile()
+	elif Input.is_action_just_pressed('rotate') && cumulative.in_menu == true:
+		Vars.rotate = true
 	#if Input.is_action_just_pressed('grass'):
 	#	tile_index = 12
 	#elif Input.is_action_just_pressed('concrete'):
