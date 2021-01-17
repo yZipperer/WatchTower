@@ -17,9 +17,11 @@ func _physics_process(delta):
 		$Sprite.position = map_to_world(tile)
 		
 		if get_cellv(tile) == 4:
+			Vars.buildSelection = true
 			current_color = green
 			build_ready = true
 		else:
+			Vars.buildSelection = false
 			current_color = red
 			build_ready = false
 		

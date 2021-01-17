@@ -21,6 +21,7 @@ run/main_scene="res://Main.tscn"
 [autoload]
 
 Clock="*res://Clock.gd"
+Vars="*res://Vars.gd"
 
 [display]
 

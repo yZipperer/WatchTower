@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Walls/Log Wall Corner Sturdy.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Ground/Grass.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Walls/Log Wall Corner.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Walls/Log Wall Vertical.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Agriculture/Large Garden.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Agriculture/Extra Large Garden.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Walls/Log Wall Horizontal.png" type="Texture" id=7]
@@ -140,20 +139,6 @@
 8/shape_one_way_margin = 0.0
 8/shapes = [  ]
 8/z_index = 0
-9/name = "Log Wall Vertical.png 9"
-9/texture = ExtResource( 4 )
-9/tex_offset = Vector2( 0, 0 )
-9/modulate = Color( 1, 1, 1, 1 )
-9/region = Rect2( 0, 0, 32, 32 )
-9/tile_mode = 0
-9/occluder_offset = Vector2( 0, 0 )
-9/navigation_offset = Vector2( 0, 0 )
-9/shape_offset = Vector2( 0, 0 )
-9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape_one_way = false
-9/shape_one_way_margin = 0.0
-9/shapes = [  ]
-9/z_index = 0
 
 [node name="Cumulative" type="TileMap"]
 tile_set = SubResource( 1 )

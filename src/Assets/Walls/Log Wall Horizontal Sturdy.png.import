@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Log Wall Vertical.png-913d32fe2a4c825eed24143a414e015e.stex"
+path="res://.import/Log Wall Horizontal Sturdy.png-74fe677dafd15f0a568f5548f5714af8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Walls/Log Wall Vertical.png"
-dest_files=[ "res://.import/Log Wall Vertical.png-913d32fe2a4c825eed24143a414e015e.stex" ]
+source_file="res://Assets/Walls/Log Wall Horizontal Sturdy.png"
+dest_files=[ "res://.import/Log Wall Horizontal Sturdy.png-74fe677dafd15f0a568f5548f5714af8.stex" ]
 
 [params]
 

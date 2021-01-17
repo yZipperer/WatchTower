@@ -11,20 +11,25 @@ func _ready():
 	
 	
 var tile = null
-var tile_index = 0
+var tile_index = -100
 
 var tile_name
 onready var current_set = cumulative
 func _unhandled_input(event):
-	if Input.is_action_just_pressed('click_left') && cumulative.in_menu == true:
-		var target_position = get_global_mouse_position()
-		tile = current_set.world_to_map(target_position)
-		#has(var2str((tile/2).floor())) == false:
-		#print(var2str((tile/2).floor()))
-		change_tile()
+	if Input.is_action_just_pressed('click_left') && cumulative.in_menu == true && Vars.buildSelection == true:
+		if tile_index == -100:
+			pass
+		else:
+			var target_position = get_global_mouse_position()
+			tile = current_set.world_to_map(target_position)
+			#has(var2str((tile/2).floor())) == false:
+			#print(var2str((tile/2).floor()))
+			change_tile()
 	elif Input.is_action_just_pressed('toggle'):
 		cumulative.in_menu = !cumulative.in_menu
 		buildMenu.visible = !buildMenu.visible
+		if buildMenu.visible:
+			tile_index = -100
 	elif Input.is_action_just_pressed('click_right') && cumulative.in_menu == true:
 		var target_position = get_global_mouse_position()
 		tile = current_set.world_to_map(target_position)
@@ -51,4 +56,4 @@ func delete_tile():
 
 func _on_Wall_Straight_pressed():
 	current_set = cumulative
-	tile_index = 9
+	tile_index = 8
