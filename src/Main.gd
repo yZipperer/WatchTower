@@ -24,18 +24,21 @@ func _unhandled_input(event):
 			tile = current_set.world_to_map(target_position)
 			#current_set.world_to_map(tile).set_rotation_degrees(tile.get_rotation_degrees() + 90)
 			var tile_i = current_set.get_cellv(tile)
-			var rand_num = randi() % 4 +1
 			
-			if rand_num == 1:
-				current_set.set_cell(tile.x, tile.y, tile_i, true, false, true) #up
-			elif rand_num == 2:
+			var tile_data = [
+				current_set.is_cell_x_flipped(tile.x, tile.y),
+				current_set.is_cell_y_flipped(tile.x, tile.y),
+				current_set.is_cell_transposed(tile.x, tile.y)]
+
+			if tile_data[0] == false && tile_data[1] == false && tile_data[2] == false:
 				current_set.set_cell(tile.x, tile.y, tile_i, false, true, true) #down
-			elif rand_num == 3:
-				current_set.set_cell(tile.x, tile.y, tile_i, false, true, false) #right
-			elif rand_num == 4:
-				current_set.set_cell(tile.x, tile.y, tile_i, true, false, false) #left
-			else:
-				pass
+			elif tile_data[0] == false && tile_data[1] == true && tile_data[2] == true:
+				current_set.set_cell(tile.x, tile.y, tile_i, true, true, false) #left
+			elif tile_data[0] == true && tile_data[1] == true && tile_data[2] == false:
+				current_set.set_cell(tile.x, tile.y, tile_i, true, false, true) #up
+			elif tile_data[0] == true && tile_data[1] == false && tile_data[2] == true:
+				current_set.set_cell(tile.x, tile.y, tile_i, false, false, false) #right
+				
 		elif Vars.buildSelection == true:
 			var target_position = get_global_mouse_position()
 			tile = current_set.world_to_map(target_position)
