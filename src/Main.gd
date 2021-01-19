@@ -22,8 +22,20 @@ func _unhandled_input(event):
 		elif Vars.rotate == true:
 			var target_position = get_global_mouse_position()
 			tile = current_set.world_to_map(target_position)
+			#current_set.world_to_map(tile).set_rotation_degrees(tile.get_rotation_degrees() + 90)
 			var tile_i = current_set.get_cellv(tile)
-			current_set.set_cell(tile.x, tile.y, tile_i, true, false, true)
+			var rand_num = randi() % 4 +1
+			
+			if rand_num == 1:
+				current_set.set_cell(tile.x, tile.y, tile_i, true, false, true) #up
+			elif rand_num == 2:
+				current_set.set_cell(tile.x, tile.y, tile_i, false, true, true) #down
+			elif rand_num == 3:
+				current_set.set_cell(tile.x, tile.y, tile_i, false, true, false) #right
+			elif rand_num == 4:
+				current_set.set_cell(tile.x, tile.y, tile_i, true, false, false) #left
+			else:
+				pass
 		elif Vars.buildSelection == true:
 			var target_position = get_global_mouse_position()
 			tile = current_set.world_to_map(target_position)
