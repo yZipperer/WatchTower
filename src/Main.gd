@@ -9,26 +9,25 @@ func _ready():
 	var tiles = cumulative.get_used_cells()
 	var mouse_pos = get_viewport().get_mouse_position()
 	
-	
 var tile = null
 var tile_index = -100
 
 var tile_name
 onready var current_set = cumulative
 func _unhandled_input(event):
-	if Input.is_action_just_pressed('click_left') && cumulative.in_menu == true:
-		if tile_index == -100 && Vars.buildSelection == true:
+	if Input.is_action_just_pressed('click_left'):
+		if tile_index == -100 && Vars.buildSelection == true && Vars.rotate == false:
 			pass
 		elif Vars.rotate == true:
 			var target_position = get_global_mouse_position()
 			tile = current_set.world_to_map(target_position)
-			#current_set.world_to_map(tile).set_rotation_degrees(tile.get_rotation_degrees() + 90)
 			var tile_i = current_set.get_cellv(tile)
 			
 			var tile_data = [
-				current_set.is_cell_x_flipped(tile.x, tile.y),
-				current_set.is_cell_y_flipped(tile.x, tile.y),
-				current_set.is_cell_transposed(tile.x, tile.y)]
+					current_set.is_cell_x_flipped(tile.x, tile.y),
+					current_set.is_cell_y_flipped(tile.x, tile.y),
+					current_set.is_cell_transposed(tile.x, tile.y)
+				]
 
 			if tile_data[0] == false && tile_data[1] == false && tile_data[2] == false:
 				current_set.set_cell(tile.x, tile.y, tile_i, false, true, true) #down
@@ -46,8 +45,21 @@ func _unhandled_input(event):
 			#print(var2str((tile/2).floor()))
 			change_tile()
 	elif Input.is_action_just_pressed('toggle'):
-		cumulative.in_menu = !cumulative.in_menu
-		buildMenu.visible = !buildMenu.visible
+		
+		if buildMenu.visible == false:
+			print("build")
+			buildMenu.visible = true
+			$UI/BuildMode.visible = true
+			cumulative.in_menu = true
+			$UI/RotateMode.visible = false
+			Vars.rotate = false
+		else:
+			buildMenu.visible = false
+			$UI/BuildMode.visible = false
+			cumulative.in_menu = false
+			$UI/RotateMode.visible = false
+			Vars.rotate = false
+
 		if buildMenu.visible:
 			tile_index = -100
 	elif Input.is_action_just_pressed('click_right') && cumulative.in_menu == true:
@@ -55,14 +67,21 @@ func _unhandled_input(event):
 		tile = current_set.world_to_map(target_position)
 		#print(var2str((tile/2).floor()))
 		delete_tile()
-	elif Input.is_action_just_pressed('rotate') && cumulative.in_menu == true:
-		Vars.rotate = true
-	#if Input.is_action_just_pressed('grass'):
-	#	tile_index = 12
-	#elif Input.is_action_just_pressed('concrete'):
-	#	print('pressed')
-	#	tile_index = 11
-	#	
+	elif Input.is_action_just_pressed('rotate'):
+		if Vars.rotate == false:
+			print("rotate")
+			Vars.rotate = true
+			$UI/RotateMode.visible = true
+			buildMenu.visible = false
+			$UI/BuildMode.visible = false
+			cumulative.in_menu = false
+		else:
+			$UI/RotateMode.visible = false
+			Vars.rotate = false
+			buildMenu.visible = false
+			$UI/BuildMode.visible = false
+			cumulative.in_menu = false
+
 func change_tile():
 	current_set.set_cell(tile.floor().x, tile.floor().y, tile_index)
 func delete_tile():

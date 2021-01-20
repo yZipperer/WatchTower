@@ -147,6 +147,7 @@ format = 1
 script = ExtResource( 11 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 material = ExtResource( 12 )
 texture = ExtResource( 2 )
 offset = Vector2( 16, 16 )
