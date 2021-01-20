@@ -81,8 +81,11 @@ func _unhandled_input(event):
 			buildMenu.visible = false
 			$UI/BuildMode.visible = false
 			cumulative.in_menu = false
+	elif Input.is_action_just_pressed('esc'):
+		$EscMenu.visible = !$EscMenu.visible
 
 func change_tile():
+	cumulative.set_cell(tile.floor().x, tile.floor().y, -1)
 	current_set.set_cell(tile.floor().x, tile.floor().y, tile_index)
 func delete_tile():
 	cumulative.set_cell(tile.floor().x, tile.floor().y, -1)

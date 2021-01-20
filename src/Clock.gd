@@ -9,11 +9,15 @@ var days = 0
 
 var pause = false
 
+onready var SAVE_KEY : String = "Clock_" + name
+var save_game: Resource = load("res://debug/save/save_001.tres")
+
 #var prev_speed_control = 2
 var speed_control = 2 #setget set_speed_control
 
 func _ready():
 	#When the game opens, it will automatically start the clock
+	loadf(save_game)
 	time(speed_control)
 
 func time(speed):
@@ -55,3 +59,11 @@ func time(speed):
 #	print("Minutes" + str(time[2]))
 	
 
+func save(save_game : Resource):
+	var time = [days, hours, minutes]
+	save_game.data[SAVE_KEY] = time
+
+func loadf(save_game : Resource):
+	days = save_game.data[SAVE_KEY][0]
+	hours = save_game.data[SAVE_KEY][1]
+	minutes = save_game.data[SAVE_KEY][2]

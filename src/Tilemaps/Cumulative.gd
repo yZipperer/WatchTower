@@ -10,7 +10,11 @@ var in_menu = false
 
 onready var sprite = $Sprite
 
+onready var SAVE_KEY : String = "TileMap_" + name
+var save_game: Resource = load("res://debug/save/save_001.tres")
+
 func _ready():
+	loadf(save_game)
 	sprite.visible = false
 
 func _physics_process(delta):
@@ -40,3 +44,16 @@ func _physics_process(delta):
 		sprite.material.set_shader_param('current_color', current_color)
 	else:
 		sprite.visible = false
+		
+func save(save_game : Resource):
+	var save = []
+	var tiles = self.get_used_cells()
+	for tile in tiles:
+		var save_tile = [tile, self.get_cellv(tile)]
+		save.append(save_tile)
+	save_game.data[SAVE_KEY] = save
+
+func loadf(save_game : Resource):
+	#save_game.data[SAVE_KEY]
+	for save_tile in save_game.data[SAVE_KEY]:
+		self.set_cell(save_tile[0].x, save_tile[0].y, save_tile[1])
