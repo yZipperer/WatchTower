@@ -8,6 +8,10 @@ onready var arrowsLabel = $Panel/HBoxContainer/MainMaterials/ArrowsLabel
 onready var population = $Panel/HBoxContainer/Stats/PopulationLabel
 
 func _ready():
+	Vars.connect("updateLabels", self, "updateLabels")
+	updateLabels()
+	
+func updateLabels():
 	population.text = "Population: " + str(Vars.population)
 	
 	woodLabel.text = "Wood: " + str(Vars.wood)

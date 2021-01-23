@@ -4,6 +4,7 @@ extends Node2D
 #onready var logWalls = $LogWalls
 onready var cumulative = $Cumulative
 onready var buildMenu = $"Build System UI"
+onready var UI = $UI
 
 func _ready():
 	var tiles = cumulative.get_used_cells()
@@ -108,3 +109,4 @@ func _on_Small_Garden_pressed():
 	tile_index = 3
 	
 	Vars.smallGardens += 1
+	Vars.smallGardenProduce(10)

@@ -1,5 +1,7 @@
 extends Node
 
+signal updateLabels
+
 var buildSelection = false
 var rotateSelection = false
 
@@ -16,3 +18,11 @@ var bullets = 0
 
 #Buildings
 var smallGardens = 0
+
+func smallGardenProduce(time):
+	if smallGardens >= 1:
+		yield(get_tree().create_timer(10), "timeout")
+		wheat += randi()%2+1
+		smallGardenProduce(time)
+		emit_signal("updateLabels")
+	
