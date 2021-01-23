@@ -49,11 +49,14 @@ func save(save_game : Resource):
 	var save = []
 	var tiles = self.get_used_cells()
 	for tile in tiles:
-		var save_tile = [tile, self.get_cellv(tile)]
+		var x_flip = self.is_cell_x_flipped(tile.x, tile.y)
+		var y_flip = self.is_cell_y_flipped(tile.x, tile.y)
+		var transpose = self.is_cell_transposed(tile.x, tile.y)
+		var save_tile = [tile, self.get_cellv(tile), x_flip, y_flip, transpose]
 		save.append(save_tile)
 	save_game.data[SAVE_KEY] = save
 
 func loadf(save_game : Resource):
 	#save_game.data[SAVE_KEY]
 	for save_tile in save_game.data[SAVE_KEY]:
-		self.set_cell(save_tile[0].x, save_tile[0].y, save_tile[1])
+		self.set_cell(save_tile[0].x, save_tile[0].y, save_tile[1], save_tile[2], save_tile[3], save_tile[4])
