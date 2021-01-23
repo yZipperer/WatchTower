@@ -101,3 +101,10 @@ func delete_tile():
 func _on_Wall_Straight_pressed():
 	current_set = cumulative
 	tile_index = 8
+
+
+func _on_Small_Garden_pressed():
+	current_set = cumulative
+	tile_index = 3
+	
+	Vars.smallGardens += 1
