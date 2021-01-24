@@ -3,7 +3,7 @@ A Base building survival management game made in Godot.
 
 ![](src/Assets/Banner.png)
 
-The overall goal of WatchTower is to build a prosperous base.
+The overall goal of WatchTower is to build a prosperous base. Use resources to build buildings and walls, while growing a population of survivors.
 
 === Agriculture ===
 
