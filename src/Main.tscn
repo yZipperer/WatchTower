@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tilemaps/Cumulative.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Esc Menu/EscMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Camera/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Clock.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Building System/Build System UI.tscn" type="PackedScene" id=7]
@@ -21,24 +22,39 @@ green = Color( 0.0901961, 0.870588, 0.172549, 0.498039 )
 "save",
 ] instance=ExtResource( 5 )]
 
-[node name="UI" parent="." instance=ExtResource( 4 )]
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
-[node name="Build System UI" parent="." instance=ExtResource( 7 )]
+[node name="Camera" parent="." instance=ExtResource( 3 )]
+
+[node name="RemoteTransform2D" parent="Camera" index="0"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EscMenu" parent="CanvasLayer" instance=ExtResource( 2 )]
 visible = false
 
-[node name="Walls" parent="Build System UI/ScrollContainer/Tabs" index="0"]
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+[node name="Build System UI" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
+
+[node name="Walls" parent="CanvasLayer/Build System UI/ScrollContainer/Tabs" index="0"]
 visible = true
 
-[node name="Farms" parent="Build System UI/ScrollContainer/Tabs" index="1"]
+[node name="Farms" parent="CanvasLayer/Build System UI/ScrollContainer/Tabs" index="1"]
 visible = false
-
-[node name="EscMenu" parent="." instance=ExtResource( 2 )]
-visible = false
-[connection signal="pressed" from="Build System UI/ScrollContainer/Tabs/Walls/Wall Straight/Wall Straight" to="." method="_on_Wall_Straight_pressed"]
-[connection signal="pressed" from="Build System UI/ScrollContainer/Tabs/Farms/Small Garden/Small Garden" to="." method="_on_Small_Garden_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Panel/HBoxContainer/HBoxContainer/SpeedControls/Pause" to="CanvasLayer/UI" method="_on_Pause_pressed"]
+[connection signal="pressed" from="CanvasLayer/Build System UI/ScrollContainer/Tabs/Walls/Wall Straight/Wall Straight" to="." method="_on_Wall_Straight_pressed"]
+[connection signal="pressed" from="CanvasLayer/Build System UI/ScrollContainer/Tabs/Farms/Small Garden/Small Garden" to="." method="_on_Small_Garden_pressed"]
 
 [editable path="Cumulative"]
 
-[editable path="UI"]
+[editable path="Camera"]
 
-[editable path="Build System UI"]
+[editable path="CanvasLayer/EscMenu"]
+
+[editable path="CanvasLayer/UI"]
+
+[editable path="CanvasLayer/Build System UI"]

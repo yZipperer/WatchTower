@@ -3,8 +3,8 @@ extends Node2D
 
 #onready var logWalls = $LogWalls
 onready var cumulative = $Cumulative
-onready var buildMenu = $"Build System UI"
-onready var UI = $UI
+onready var buildMenu = $"CanvasLayer/Build System UI"
+onready var UI = $CanvasLayer/UI
 
 func _ready():
 	var tiles = cumulative.get_used_cells()
@@ -16,7 +16,9 @@ var tile_index = -100
 var tile_name
 onready var current_set = cumulative
 func _unhandled_input(event):
+	print("input")
 	if Input.is_action_just_pressed('click_left'):
+		print("left click")
 		if tile_index == -100 && Vars.buildSelection == true && Vars.rotate == false:
 			pass
 		elif Vars.rotate == true:
@@ -50,15 +52,15 @@ func _unhandled_input(event):
 		if buildMenu.visible == false:
 			print("build")
 			buildMenu.visible = true
-			$UI/BuildMode.visible = true
+			$CanvasLayer/UI/BuildMode.visible = true
 			cumulative.in_menu = true
-			$UI/RotateMode.visible = false
+			$CanvasLayer/UI/RotateMode.visible = false
 			Vars.rotate = false
 		else:
 			buildMenu.visible = false
-			$UI/BuildMode.visible = false
+			$CanvasLayer/UI/BuildMode.visible = false
 			cumulative.in_menu = false
-			$UI/RotateMode.visible = false
+			$CanvasLayer/UI/RotateMode.visible = false
 			Vars.rotate = false
 
 		if buildMenu.visible:
@@ -72,18 +74,18 @@ func _unhandled_input(event):
 		if Vars.rotate == false:
 			print("rotate")
 			Vars.rotate = true
-			$UI/RotateMode.visible = true
+			$CanvasLayer/UI/RotateMode.visible = true
 			buildMenu.visible = false
-			$UI/BuildMode.visible = false
+			$CanvasLayer/UI/BuildMode.visible = false
 			cumulative.in_menu = false
 		else:
-			$UI/RotateMode.visible = false
+			$CanvasLayer/UI/RotateMode.visible = false
 			Vars.rotate = false
 			buildMenu.visible = false
-			$UI/BuildMode.visible = false
+			$CanvasLayer/UI/BuildMode.visible = false
 			cumulative.in_menu = false
 	elif Input.is_action_just_pressed('esc'):
-		$EscMenu.visible = !$EscMenu.visible
+		$CanvasLayer/EscMenu.visible = !$CanvasLayer/EscMenu.visible
 
 func change_tile():
 	cumulative.set_cell(tile.floor().x, tile.floor().y, -1)

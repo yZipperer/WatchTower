@@ -18,3 +18,7 @@ func updateLabels():
 	wheatLabel.text = "Wheat: " + str(Vars.wheat)
 	stoneLabel.text = "Stone: " + str(Vars.stone)
 	arrowsLabel.text = "Arrows: " + str(Vars.arrows)
+
+
+func _on_Pause_pressed():
+	pass # Replace with function body.
