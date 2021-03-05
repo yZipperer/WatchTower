@@ -11,4 +11,4 @@ Small Garden:
 - Takes 10 seconds, or 1 ingame hour
 - Produces 1-2 wheat
 
-*This game is still in development*
+*Another side project I won't finish*
